@@ -1,0 +1,58 @@
+﻿  <SdtRequest>
+  <Header>
+    <Object_Id>299</Object_Id>
+    <Credencial>150808SX8088</Credencial>
+    <UserName>DBPMS</UserName>
+    <SupervisorName>DBPMS</SupervisorName>
+    <Action>E</Action>
+    <Value>1</Value>
+  </Header>
+  <Parametros>
+    <SdtRequest.Parametro>
+      <P>GV_XML</P>
+      <X><![CDATA[<DATA><ROWS etapa="18"   hilo_activo="14941"     hilo="6328"    cerrar="S"  usuarioelegido="0"  plantilla="11"> </ROWS></DATA>]]></X>
+    </SdtRequest.Parametro>
+  </Parametros>
+  </SdtRequest>
+
+
+otro ejemplo
+
+
+<SdtRequest>
+  <Header>
+    <Object_Id>500</Object_Id>
+    <Credencial>150808SX8088</Credencial>
+    <UserName>DBPMS</UserName>
+    <SupervisorName>DBPMS</SupervisorName>
+    <Action>S</Action>
+    <Value>1</Value>
+  </Header>
+  <Parametros>
+    <SdtRequest.Parametro>
+      <P>PARAM1</P>
+      <V>6329</V>
+    </SdtRequest.Parametro>
+    <SdtRequest.Parametro>
+      <P>PARAM2</P>
+      <V>14954</V>
+    </SdtRequest.Parametro>
+  </Parametros>
+</SdtRequest>
+
+
+
+
+
+
+CREATE OR REPLACE PROCEDURE GetRegistrosXML
+                        (Pv_XML_RESPONSE IN CLOB,
+                        Lv_cadenapath in varchar2,
+                        Gn_registros OUT NUMBER
+) IS
+
+BEGIN
+ SELECT COUNT(*)  INTO Gn_registros
+    FROM TABLE(XMLSequence(extract(xmltype(Pv_XML_RESPONSE), Lv_cadenapath)))
+     DUAL;
+ END;
