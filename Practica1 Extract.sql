@@ -28,10 +28,11 @@ declare
    
    for i in 1..cant_nodos loop 
    tag := to_char(i);
-   SELECT
+   /*SELECT
     extractvalue(xml,'//SdtRequest/Header/*['|| tag ||']') columna into valor
        FROM dual;   
-   DBMS_OUTPUT.PUT_LINE (valor);
+   DBMS_OUTPUT.PUT_LINE (valor);*/
+   dbms_output.put_line('//SdtRequest/Header/*['|| tag ||']');
    end loop;
   
 end;
