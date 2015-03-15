@@ -83,7 +83,8 @@ SELECT XMLParse(CONTENT
                 WELLFORMED)
   AS po FROM DUAL d;
 
----Extracción de datos---------------------------------------------------------------
+---                Extracción de datos----------------------------------------------------------------------------------------------------------------
+
 /*SELECT EXTRACT(warehouse_spec, '/Warehouse') as "Warehouse"
    FROM warehouses WHERE warehouse_name = 'San Francisco';*/
 --Extrat saca los nodos que le son indicados  de la forma extract (xml_file,'nodos que quiero sacar //nodo_padre/nodo_hijo')
