@@ -1,0 +1,29 @@
+<SdtRequest>
+  <Header>
+    <Object_Id>500</Object_Id>
+    <Credencial>150808SX8088</Credencial>
+    <UserName>DBPMS</UserName>
+    <SupervisorName>DBPMS</SupervisorName>
+    <Action>S</Action>
+    <Value>1</Value>
+  </Header>
+  <Parametros>
+    <SdtRequest.Parametro>
+      <P>PARAM1</P>
+      <V>6326</V>
+    </SdtRequest.Parametro>
+    <SdtRequest.Parametro>
+      <P>PARAM2</P>
+      <V>14815</V>
+    </SdtRequest.Parametro>
+    <SdtRequest.Parametro>
+      <P>CEDULA</P>
+      <V>3434366667</V>
+    </SdtRequest.Parametro>
+    <SdtRequest.Parametro>
+      <P>NOMBRE</P>
+      <V>Ademar Diaz</V>
+    </SdtRequest.Parametro>
+  </Parametros>
+</SdtRequest>
+
