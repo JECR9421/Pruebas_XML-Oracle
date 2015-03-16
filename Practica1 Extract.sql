@@ -3,7 +3,7 @@ declare
    cant_nodos NUMBER;
    xml Clob;
    valor VARCHAR2(125);
-   tag varchar2(3);
+   tag varchar2(100);
  begin
  cant_nodos := 0;
  xml:= '<SdtRequest>
@@ -27,12 +27,12 @@ declare
    DBMS_OUTPUT.PUT_LINE (cant_nodos);
    
    for i in 1..cant_nodos loop 
-   tag := to_char(i);
-   /*SELECT
-    extractvalue(xml,'//SdtRequest/Header/*['|| tag ||']') columna into valor
+   tag := '//SdtRequest/Header/*['|| to_char(i) ||']';
+   SELECT
+    extractvalue(xml,tag) columna into valor
        FROM dual;   
-   DBMS_OUTPUT.PUT_LINE (valor);*/
-   dbms_output.put_line('//SdtRequest/Header/*['|| tag ||']');
+   --DBMS_OUTPUT.PUT_LINE (tag);
+   dbms_output.put_line(valor);
    end loop;
   
 end;
