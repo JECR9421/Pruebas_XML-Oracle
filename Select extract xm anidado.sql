@@ -46,15 +46,18 @@ begin
   SELECT
 extractvalue(
 xmltype(xml),'//SdtRequest/Parametros/SdtRequest.Parametro/*[2]') Subxml into subxml
-   FROM dual;   
-  --dbms_output.put_line(subxml);
+   FROM dual;  
+   
+  dbms_output.put_line('subxml:'||subxml);
   
-  subxml_extract := xmltype.createxml(subxml);
+ /* subxml_extract := xmltype.createxml(subxml);
   
-etapa := subxml_extract.EXTRACT('//DATA/ROWS/@etapa').getstringval();
+etapa := subxml_extract.EXTRACT('//DATA/ROWS/@etapa').getstringval();*/
 
-  
-  dbms_output.put_line(etapa);
+SELECT extract(xmltype(subxml),'//DATA/ROWS/@etapa').getstringval() Subxml into etapa
+   FROM dual;
+  dbms_output.put_line('Atributos subxml');
+  dbms_output.put_line('Etapa:'||etapa);
 
 
 end;
