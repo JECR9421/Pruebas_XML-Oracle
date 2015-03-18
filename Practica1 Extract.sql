@@ -4,6 +4,7 @@ declare
    xml Clob;
    valor VARCHAR2(125);
    tag varchar2(100);
+   tagname varchar2(100);
  begin
  cant_nodos := 0;
  xml:= '<SdtRequest>
@@ -28,11 +29,20 @@ declare
    
    for i in 1..cant_nodos loop 
    tag := '//SdtRequest/Header/*['|| to_char(i) ||']';
+   
    SELECT
+    xmltype(xml).extract(tag).getrootelement() node into tagname/*,
+    extractvalue(xmltype(xml),tag) columna into valor*/
+       FROM dual; 
+       
+   SELECT
+    /* xmltype(xml).extract(tag).getrootelement() node into tagname,*/
     extractvalue(xmltype(xml),tag) columna into valor
-       FROM dual;   
-   --DBMS_OUTPUT.PUT_LINE (tag);
-   dbms_output.put_line(valor);
+       FROM dual; 
+       
+    
+   
+   dbms_output.put_line(tagname||':'||valor);
    end loop;
   
 end;
